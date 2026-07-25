@@ -16,25 +16,41 @@
 
     <div class="container">
 
-        <div class="card">
+        <div class="card-login">
 
             <h2>Student Login</h2>
 
-            <form action="#" method="post">
+            <form action="{{ url_for('login') }}" method="POST">
 
-                <label>User ID</label><br>
-                <input type="text" name="userid" placeholder="Enter User ID" required><br><br>
+                <div class="form-group">
+                    <label for="userid">Student ID</label>
+                    <input
+                        type="text"
+                        id="userid"
+                        name="userid"
+                        placeholder="Enter your Student ID"
+                        required>
+                </div>
 
-                <label>Password</label><br>
-                <input type="password" name="password" placeholder="Enter Password" required><br><br>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        required>
+                </div>
 
-                <button type="submit">Login</button>
+                <button type="submit" class="register-btn">
+                    Login
+                </button>
 
             </form>
 
             <p>
                 Don't have an account?
-                <a href="register.html">Register</a>
+                <a href="{{ url_for('register') }}">Register</a>
             </p>
 
         </div>

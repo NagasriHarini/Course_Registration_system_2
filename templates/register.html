@@ -15,31 +15,131 @@
     </header>
 
     <div class="container">
-        <div class="card">
+        <div class="card-register">
 
             <h2>Student Registration</h2>
 
-            <form action="#" method="post">
+            <form action="{{ url_for('register') }}" method="POST">
 
-                <label>Full Name</label><br>
-                <input type="text" name="name" placeholder="Enter your full name" required><br><br>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="first_name">First Name</label>
+                        <input
+                            type="text"
+                            id="first_name"
+                            name="first_name"
+                            placeholder="John"
+                            required>
+                    </div>
 
-                <label>User ID</label><br>
-                <input type="text" name="userid" placeholder="Create a User ID" required><br><br>
+                    <div class="form-group">
+                        <label for="last_name">Last Name</label>
+                        <input
+                            type="text"
+                            id="last_name"
+                            name="last_name"
+                            placeholder="Doe"
+                            required>
+                    </div>
+                </div>
 
-                <label>Phone Number</label><br>
-                <input type="tel" name="phone" placeholder="Enter phone number" required><br><br>
+                <div class="form-group">
+                    <label for="email">University Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="john@university.edu"
+                        required>
+                </div>
 
-                <label>Password</label><br>
-                <input type="password" name="password" placeholder="Create a password" required><br><br>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="department">Department</label>
+                        <select id="department" name="department" required>
+                            <option value="">Select Department</option>
+                            <option>CSE</option>
+                            <option>AI</option>
+                            <option>ECE</option>
+                            <option>EEE</option>
+                            <option>Mechanical</option>
+                            <option>Civil</option>
+                        </select>
+                    </div>
 
-                <button type="submit">Register</button>
+                    <div class="form-group">
+                        <label for="year_of_study">Year</label>
+                        <select id="year_of_study" name="year_of_study" required>
+                            <option value="">Select Year</option>
+                            <option value="1">1st Year</option>
+                            <option value="2">2nd Year</option>
+                            <option value="3">3rd Year</option>
+                            <option value="4">4th Year</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone_number">Phone Number</label>
+                    <input
+                        type="tel"
+                        id="phone_number"
+                        name="phone_number"
+                        placeholder="+91 98765 43210"
+                        pattern="[0-9]{10}">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="student_id">Student ID</label>
+                        <input
+                            type="text"
+                            id="student_id"
+                            name="student_id"
+                            placeholder="CB.EN.U4AIE22001"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="section">Section</label>
+                        <select id="section" name="section">
+                            <option value="">Select</option>
+                            <option>A</option>
+                            <option>B</option>
+                            <option>C</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Create Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Minimum 8 characters"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input
+                        type="password"
+                        id="confirm_password"
+                        name="confirm_password"
+                        placeholder="Re-enter password"
+                        required>
+                </div>
+
+                <button type="submit" class="register-btn">
+                    Register
+                </button>
 
             </form>
 
             <p>
                 Already have an account?
-                <a href="login.html">Login</a>
+                <a href="{{ url_for('login') }}">Login</a>
             </p>
 
         </div>

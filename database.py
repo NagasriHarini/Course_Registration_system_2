@@ -7,4 +7,4 @@ conn = pyodbc.connect(
     "Trusted_Connection=yes;"
 )
 
-print("Connected successfully!")
+cursor  = conn.cursor()

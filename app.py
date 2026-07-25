@@ -20,9 +20,10 @@ def login():
 def register():
     return render_template('register.html')
 
-@app.route('/admin')
+@app.route('/Admin')
 def admin():
-    return render_template('admin.html')
+    return render_template('Admin.html')
+
 
 if __name__ =='__main__':
     app.run(debug=True)
