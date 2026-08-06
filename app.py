@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session
-
-
+from database import register_student
 app = Flask(__name__)
 
 
@@ -16,8 +15,15 @@ def student():
 def login():
     return render_template('login.html')
 
-@app.route('/register')
+@app.route('/register', methods=['GET', 'POST'])
 def register():
+
+    if request.method == 'POST':
+
+        data = request.form
+
+        register_student(data)
+        return 'successfully registered'
     return render_template('register.html')
 
 @app.route('/Admin')
