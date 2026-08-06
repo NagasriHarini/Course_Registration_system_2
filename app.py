@@ -23,7 +23,7 @@ def register():
         data = request.form
 
         register_student(data)
-        return 'successfully registered'
+        return redirect(url_for('login'))
     return render_template('register.html')
 
 @app.route('/Admin')
