@@ -96,7 +96,7 @@
                             type="text"
                             id="student_id"
                             name="student_id"
-                            placeholder="CB.EN.U4AIE22001"
+                            placeholder="Enter the Student ID"
                             required>
                     </div>
 
@@ -145,7 +145,54 @@
         </div>
     </div>
 <script>
-document.getElementById("registerForm").addEventListener("submit", function(event){
+const registerForm = document.getElementById("registerForm");
+
+const password = document.getElementById("password");
+const confirmPassword = document.getElementById("confirm_password");
+
+// ==========================
+// Live Password Validation
+// ==========================
+password.addEventListener("input", function () {
+
+    const passwordPattern =
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^()_\-+=])[A-Za-z\d@$!%*?&#^()_\-+=]{8,}$/;
+
+    if (!passwordPattern.test(password.value)) {
+        password.setCustomValidity(
+            "Password must be at least 8 characters long and contain one uppercase letter, one lowercase letter, one number, and one special character."
+        );
+    } else {
+        password.setCustomValidity("");
+    }
+
+    // Check confirm password whenever password changes
+    if (confirmPassword.value !== "") {
+        if (password.value !== confirmPassword.value) {
+            confirmPassword.setCustomValidity("Passwords do not match.");
+        } else {
+            confirmPassword.setCustomValidity("");
+        }
+    }
+});
+
+// ==========================
+// Live Confirm Password Check
+// ==========================
+confirmPassword.addEventListener("input", function () {
+
+    if (password.value !== confirmPassword.value) {
+        confirmPassword.setCustomValidity("Passwords do not match.");
+    } else {
+        confirmPassword.setCustomValidity("");
+    }
+
+});
+
+// ==========================
+// Form Validation
+// ==========================
+registerForm.addEventListener("submit", function (event) {
 
     const firstName = document.getElementById("first_name").value.trim();
     const lastName = document.getElementById("last_name").value.trim();
@@ -154,80 +201,72 @@ document.getElementById("registerForm").addEventListener("submit", function(even
     const year = document.getElementById("year_of_study").value;
     const phone = document.getElementById("phone_number").value.trim();
     const studentID = document.getElementById("student_id").value.trim();
-    const password = document.getElementById("password").value;
-    const confirmPassword = document.getElementById("confirm_password").value;
-
-    // First Name
-    if(firstName.length < 2){
+    const passwordValue = password.value;
+    const confirmPasswordValue = confirmPassword.value;
+    if (firstName.length < 2) {
         alert("First name must contain at least 2 characters.");
         event.preventDefault();
         return;
     }
-
-    // Last Name
-    if(lastName.length < 2){
+    if (lastName.length < 2) {
         alert("Last name must contain at least 2 characters.");
         event.preventDefault();
         return;
     }
-
-    // Email
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if(!emailPattern.test(email)){
+    if (!emailPattern.test(email)) {
         alert("Please enter a valid email address.");
         event.preventDefault();
         return;
     }
 
-    // Department
-    if(department === ""){
+    if (department === "") {
         alert("Please select your department.");
         event.preventDefault();
         return;
     }
 
-    // Year
-    if(year === ""){
+    if (year === "") {
         alert("Please select your year of study.");
         event.preventDefault();
         return;
     }
 
-    // Phone Number
-    if(phone !== ""){
+    if (phone !== "") {
 
         const phonePattern = /^[0-9]{10}$/;
 
-        if(!phonePattern.test(phone)){
+        if (!phonePattern.test(phone)) {
             alert("Phone number must contain exactly 10 digits.");
             event.preventDefault();
             return;
         }
     }
 
-    // Student ID
-    if(studentID.length < 5){
+    if (studentID.length < 5) {
         alert("Please enter a valid Student ID.");
         event.preventDefault();
         return;
     }
 
-    // Password Length
-    if(password.length < 8){
-        alert("Password must be at least 8 characters long.");
+    const passwordPattern =
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^()_\-+=])[A-Za-z\d@$!%*?&#^()_\-+=]{8,}$/;
+
+    if (!passwordPattern.test(passwordValue)) {
+        alert("Password must be at least 8 characters long and contain one uppercase letter, one lowercase letter, one number, and one special character.");
         event.preventDefault();
         return;
     }
 
-    // Password Match
-    if(password !== confirmPassword){
+    if (passwordValue !== confirmPasswordValue) {
         alert("Passwords do not match.");
         event.preventDefault();
         return;
     }
 
     alert("Validation Successful! Submitting the form...");
+
 });
 </script>
 </body>

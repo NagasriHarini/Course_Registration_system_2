@@ -21,7 +21,7 @@ body{
 .card-login{
     background:white;
     width:100%;
-    max-width:400px;
+    max-width:300px;
     padding:40px;
     border-radius:12px;
     box-shadow:0 8px 20px rgba(0,0,0,0.15);
