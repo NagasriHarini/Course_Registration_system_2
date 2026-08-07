@@ -17,11 +17,10 @@ def register_student(data):
 
     cursor.execute("""
         INSERT INTO Students
-        (student_id, first_name, last_name, email,
+        (first_name, last_name, email,
          password, department, year_of_study, phone_number,section)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     """, (
-        data["student_id"],
         data["first_name"],
         data["last_name"],
         data["email"],

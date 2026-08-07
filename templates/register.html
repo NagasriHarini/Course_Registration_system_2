@@ -90,15 +90,6 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group">
-                        <label for="student_id">Student ID</label>
-                        <input
-                            type="text"
-                            id="student_id"
-                            name="student_id"
-                            placeholder="Enter the Student ID"
-                            required>
-                    </div>
 
                     <div class="form-group">
                         <label for="section">Section</label>
@@ -200,7 +191,6 @@ registerForm.addEventListener("submit", function (event) {
     const department = document.getElementById("department").value;
     const year = document.getElementById("year_of_study").value;
     const phone = document.getElementById("phone_number").value.trim();
-    const studentID = document.getElementById("student_id").value.trim();
     const passwordValue = password.value;
     const confirmPasswordValue = confirmPassword.value;
     if (firstName.length < 2) {
@@ -242,12 +232,6 @@ registerForm.addEventListener("submit", function (event) {
             event.preventDefault();
             return;
         }
-    }
-
-    if (studentID.length < 5) {
-        alert("Please enter a valid Student ID.");
-        event.preventDefault();
-        return;
     }
 
     const passwordPattern =
