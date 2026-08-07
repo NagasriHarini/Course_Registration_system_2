@@ -8,8 +8,8 @@ connection_string = (
     "Trusted_Connection=yes;"
 )
 
-def register_student(data):
 
+def register_student(data):
     conn = pyodbc.connect(connection_string)
     cursor = conn.cursor()
 
@@ -17,8 +17,17 @@ def register_student(data):
 
     cursor.execute("""
         INSERT INTO Students
-        (first_name, last_name, email,
-         password, department, year_of_study, phone_number,section)
+        (
+            first_name,
+            last_name,
+            email,
+            password,
+            department,
+            year_of_study,
+            phone_number,
+            section
+        )
+        OUTPUT INSERTED.student_id
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     """, (
         data["first_name"],
@@ -31,6 +40,12 @@ def register_student(data):
         data["section"]
     ))
 
+    # Get the generated Student ID
+    student_id = cursor.fetchone()[0]
+
     conn.commit()
+
     cursor.close()
     conn.close()
+
+    return student_id
