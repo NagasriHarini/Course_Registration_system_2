@@ -12,8 +12,20 @@ def home():
 def student():
     return render_template('student.html')
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
+
+    if request.method == 'POST':
+
+        data = request.get_json()
+
+        # We'll check the database here
+
+        return jsonify({
+            "success": True,
+            "redirect": "/student"
+        })
+
     return render_template('login.html')
 
 @app.route('/register', methods=['GET', 'POST'])

@@ -20,7 +20,7 @@
 
             <h2>Student Login</h2>
 
-            <form action="{{ url_for('login') }}" method="POST">
+            <form id="loginForm">
 
                 <div class="form-group">
                     <label for="userid">Student ID</label>
@@ -62,8 +62,18 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 
     event.preventDefault();
 
-    const studentId = document.getElementById("userid").value;
+    const studentId = document.getElementById("userid").value.trim();
     const password = document.getElementById("password").value;
+
+    if (studentId === "") {
+        alert("Please enter your Student ID.");
+        return;
+    }
+
+    if (password === "") {
+        alert("Please enter your password.");
+        return;
+    }
 
     const response = await fetch("/login", {
         method: "POST",
@@ -78,13 +88,11 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 
     const result = await response.json();
 
-    if(result.success){
+    if (result.success) {
         window.location.href = result.redirect;
-    }
-    else{
+    } else {
         alert(result.message);
     }
-
 });
 </script>
 </body>
