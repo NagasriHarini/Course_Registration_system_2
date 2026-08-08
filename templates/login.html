@@ -57,5 +57,35 @@
 
     </div>
 
+<script>
+document.getElementById("loginForm").addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    const studentId = document.getElementById("userid").value;
+    const password = document.getElementById("password").value;
+
+    const response = await fetch("/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            student_id: studentId,
+            password: password
+        })
+    });
+
+    const result = await response.json();
+
+    if(result.success){
+        window.location.href = result.redirect;
+    }
+    else{
+        alert(result.message);
+    }
+
+});
+</script>
 </body>
 </html>

@@ -20,10 +20,13 @@ def register():
 
     if request.method == 'POST':
 
-        data = request.form
+        student_id = register_student(request.form)
 
-        register_student(data)
-        return redirect(url_for('login'))
+        return render_template(
+            'registration_success.html',
+            student_id=student_id
+        )
+
     return render_template('register.html')
 
 @app.route('/Admin')

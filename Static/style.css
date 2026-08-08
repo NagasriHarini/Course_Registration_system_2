@@ -114,3 +114,10 @@ form{
 .form-group label{
     text-align:left;
 }
+.student-id {
+    font-size: 28px;
+    font-weight: bold;
+    color: #2563eb;
+    margin: 20px 0;
+    letter-spacing: 2px;
+}
