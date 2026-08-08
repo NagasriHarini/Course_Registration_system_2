@@ -8,8 +8,8 @@ connection_string = (
     "Trusted_Connection=yes;"
 )
 
-
 def register_student(data):
+
     conn = pyodbc.connect(connection_string)
     cursor = conn.cursor()
 
@@ -40,7 +40,6 @@ def register_student(data):
         data["section"]
     ))
 
-    # Get the generated Student ID
     student_id = cursor.fetchone()[0]
 
     conn.commit()

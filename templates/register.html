@@ -183,7 +183,7 @@ confirmPassword.addEventListener("input", function () {
 // ==========================
 // Form Validation
 // ==========================
-registerForm.addEventListener("submit", function (event) {
+registerForm.addEventListener("submit", async function (event) {
 
     const firstName = document.getElementById("first_name").value.trim();
     const lastName = document.getElementById("last_name").value.trim();
@@ -193,6 +193,7 @@ registerForm.addEventListener("submit", function (event) {
     const phone = document.getElementById("phone_number").value.trim();
     const passwordValue = password.value;
     const confirmPasswordValue = confirmPassword.value;
+    const section = document.getElementById("section").value;
     if (firstName.length < 2) {
         alert("First name must contain at least 2 characters.");
         event.preventDefault();
@@ -249,7 +250,33 @@ registerForm.addEventListener("submit", function (event) {
         return;
     }
 
-    alert("Validation Successful! Submitting the form...");
+    event.preventDefault();
+
+    const response = await fetch("/register", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            first_name: firstName,
+            last_name: lastName,
+            email: email,
+            department: department,
+            year_of_study: year,
+            phone_number: phone,
+            password: passwordValue,
+            section: section
+        })
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+        alert(result.message);
+        window.location.href = result.redirect;
+    } else {
+        alert(result.message);
+    }
 
 });
 </script>
