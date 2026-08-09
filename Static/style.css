@@ -121,3 +121,312 @@ form{
     margin: 20px 0;
     letter-spacing: 2px;
 }
+/* ================================
+   STUDENT DASHBOARD
+================================ */
+
+.dashboard {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+}
+
+
+/* ================================
+   SIDEBAR
+================================ */
+
+.sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background-color: #3498db;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 25px 15px;
+    box-sizing: border-box;
+}
+
+
+/* Sidebar Header */
+
+.sidebar-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sidebar-header h2 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.sidebar-header p {
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+
+/* Sidebar Menu */
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar-menu a {
+    color: white;
+    text-decoration: none;
+
+    padding: 14px 15px;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    transition: background-color 0.2s ease;
+}
+
+
+/* Hover */
+
+.sidebar-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.18);
+}
+
+
+/* Active Menu */
+
+.sidebar-menu a.active {
+    background-color: white;
+    color: #3498db;
+    font-weight: bold;
+}
+
+
+/* ================================
+   LOGOUT
+================================ */
+
+.sidebar-bottom {
+    margin-top: auto;
+}
+
+.sidebar-bottom a {
+    display: block;
+
+    color: white;
+    text-decoration: none;
+
+    padding: 14px 15px;
+
+    border-radius: 8px;
+
+    transition: background-color 0.2s ease;
+}
+
+.sidebar-bottom a:hover {
+    background-color: rgba(255, 255, 255, 0.18);
+}
+
+
+/* ================================
+   MAIN CONTENT
+================================ */
+
+.main-content {
+    flex: 1;
+    padding: 35px 40px;
+    box-sizing: border-box;
+}
+
+
+/* ================================
+   DASHBOARD HEADER
+================================ */
+
+.dashboard-header {
+    background-color: white;
+
+    padding: 20px 25px;
+
+    border-radius: 10px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+
+    margin-bottom: 25px;
+}
+
+.dashboard-header h1 {
+    margin: 0;
+
+    color: #222;
+
+    font-size: 28px;
+}
+
+
+/* ================================
+   WELCOME SECTION
+================================ */
+
+.welcome-section {
+    background-color: white;
+
+    padding: 25px;
+
+    border-radius: 10px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+
+    margin-bottom: 30px;
+}
+
+.welcome-section h2 {
+    margin-top: 0;
+    color: #222;
+}
+
+.welcome-section p {
+    color: #555;
+}
+
+
+/* ================================
+   DASHBOARD CARDS
+================================ */
+
+.dashboard-cards {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+
+/* Individual Card */
+
+.dashboard-card {
+    background-color: white;
+
+    padding: 25px;
+
+    border-radius: 10px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+
+/* Card Hover */
+
+.dashboard-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+
+/* Card Icon */
+
+.card-icon {
+    font-size: 35px;
+
+    margin-bottom: 15px;
+}
+
+
+/* Card Heading */
+
+.dashboard-card h3 {
+    margin-top: 0;
+
+    color: #222;
+
+    font-size: 20px;
+}
+
+
+/* Card Description */
+
+.dashboard-card p {
+    color: #666;
+
+    line-height: 1.5;
+
+    min-height: 60px;
+}
+
+
+/* Card Button */
+
+.dashboard-card a {
+    display: inline-block;
+
+    margin-top: 10px;
+
+    padding: 10px 18px;
+
+    background-color: #3498db;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 6px;
+
+    transition: background-color 0.2s ease;
+}
+
+.dashboard-card a:hover {
+    background-color: #2980b9;
+}
+
+
+/* ================================
+   RESPONSIVE DESIGN
+================================ */
+
+@media (max-width: 900px) {
+
+    .dashboard-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .sidebar-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .sidebar-bottom {
+        margin-top: 15px;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+    }
+
+}

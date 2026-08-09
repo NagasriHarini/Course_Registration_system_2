@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-header">
+
+                <h2>Course Registration</h2>
+
+                <p>Student Portal</p>
+
+            </div>
+
+
+            <nav class="sidebar-menu">
+
+                <a href="{{ url_for('student') }}" class="active">
+                    🏠 Dashboard
+                </a>
+
+                <a href="#">
+                    📚 View Courses
+                </a>
+
+                <a href="#">
+                    📝 Register Courses
+                </a>
+
+                <a href="#">
+                    📋 My Courses
+                </a>
+
+                <a href="#">
+                    🗓️ My Timetable
+                </a>
+
+                <a href="#">
+                    👤 My Profile
+                </a>
+
+            </nav>
+
+
+            <!-- Logout at bottom -->
+
+            <div class="sidebar-bottom">
+
+                <a href="#">
+                    🚪 Logout
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ================= MAIN CONTENT ================= -->
+
+        <main class="main-content">
+
+            <!-- Header -->
+
+            <header class="dashboard-header">
+
+                <h1>Student Dashboard</h1>
+
+            </header>
+
+
+            <!-- Welcome -->
+
+            <section class="welcome-section">
+
+                <h2>Welcome!</h2>
+
+                <p>
+                    Welcome to the Course Registration System.
+                </p>
+
+                <p>
+                    Select an option from the sidebar to continue.
+                </p>
+
+            </section>
+
+
+            <!-- Dashboard Cards -->
+
+            <section class="dashboard-cards">
+
+                <!-- View Courses -->
+
+                <div class="dashboard-card">
+
+                    <div class="card-icon">
+                        📚
+                    </div>
+
+                    <h3>View Courses</h3>
+
+                    <p>
+                        Browse the available courses offered
+                        for your department and semester.
+                    </p>
+
+                    <a href="#">
+                        View Courses
+                    </a>
+
+                </div>
+
+
+                <!-- Register Courses -->
+
+                <div class="dashboard-card">
+
+                    <div class="card-icon">
+                        📝
+                    </div>
+
+                    <h3>Register Courses</h3>
+
+                    <p>
+                        Select and register for the courses
+                        you want to take.
+                    </p>
+
+                    <a href="#">
+                        Register Courses
+                    </a>
+
+                </div>
+
+
+                <!-- My Courses -->
+
+                <div class="dashboard-card">
+
+                    <div class="card-icon">
+                        📋
+                    </div>
+
+                    <h3>My Courses</h3>
+
+                    <p>
+                        View the courses you are currently
+                        registered for.
+                    </p>
+
+                    <a href="#">
+                        My Courses
+                    </a>
+
+                </div>
+
+
+                <!-- Timetable -->
+
+                <div class="dashboard-card">
+
+                    <div class="card-icon">
+                        🗓️
+                    </div>
+
+                    <h3>My Timetable</h3>
+
+                    <p>
+                        View your course schedule and
+                        class timings.
+                    </p>
+
+                    <a href="#">
+                        View Timetable
+                    </a>
+
+                </div>
+
+
+                <!-- Profile -->
+
+                <div class="dashboard-card">
+
+                    <div class="card-icon">
+                        👤
+                    </div>
+
+                    <h3>My Profile</h3>
+
+                    <p>
+                        View and manage your student
+                        profile information.
+                    </p>
+
+                    <a href="#">
+                        View Profile
+                    </a>
+
+                </div>
+
+
+                <!-- Registration History -->
+
+                <div class="dashboard-card">
+
+                    <div class="card-icon">
+                        📄
+                    </div>
+
+                    <h3>Registration History</h3>
+
+                    <p>
+                        View your previous course
+                        registration details.
+                    </p>
+
+                    <a href="#">
+                        View History
+                    </a>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>

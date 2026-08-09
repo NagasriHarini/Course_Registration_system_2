@@ -25,7 +25,7 @@ def login():
             return jsonify({
                 "success": True,
                 "message": "Login successful!",
-                "redirect": "/student"
+                "redirect": "/dashboard"
             })
 
         return jsonify({
@@ -65,6 +65,9 @@ def registration_success(student_id):
 def admin():
     return render_template('Admin.html')
 
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')    
 
 if __name__ =='__main__':
     app.run(debug=True)
