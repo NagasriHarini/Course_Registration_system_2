@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, render_template, request, redirect, url_for, session
-from database import register_student
+from database import register_student,login_student
 
 app = Flask(__name__)
 
@@ -19,11 +19,18 @@ def login():
 
         data = request.get_json()
 
-        # We'll check the database here
+        student_id = login_student(data)
+
+        if student_id:
+            return jsonify({
+                "success": True,
+                "message": "Login successful!",
+                "redirect": "/student"
+            })
 
         return jsonify({
-            "success": True,
-            "redirect": "/student"
+            "success": False,
+            "message": "Invalid Student ID or password."
         })
 
     return render_template('login.html')

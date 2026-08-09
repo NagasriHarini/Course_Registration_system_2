@@ -1,5 +1,5 @@
 import pyodbc
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 
 connection_string = (
     "DRIVER={ODBC Driver 17 for SQL Server};"
@@ -48,3 +48,31 @@ def register_student(data):
     conn.close()
 
     return student_id
+def login_student(data):
+
+    conn = pyodbc.connect(connection_string)
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT student_id, password
+        FROM Students
+        WHERE student_id = ?
+    """, (data["student_id"],))
+
+    student = cursor.fetchone()
+
+    cursor.close()
+    conn.close()
+
+    # Student ID does not exist
+    if student is None:
+        return False
+
+    student_id = student[0]
+    hashed_password = student[1]
+
+    # Check entered password against hashed password
+    if check_password_hash(hashed_password, data["password"]):
+        return student_id
+
+    return False
